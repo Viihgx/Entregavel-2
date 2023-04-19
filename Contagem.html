@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Contagem</title>
+    <style>
+		body {
+  background-image: url(GifStars\ \(3\).gif);
+  background-repeat: no-repeat;
+  background-position: initial;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  font-size: 16px; 
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  /* background-color: #fff; */
+  /* box-shadow: 0 0 20px rgba(229, 255, 0, 0.2); */
+  border-radius: 10px;
+  width: 568px;
+}
+
+header {
+     /* background-color: #f2f2f2; */
+     color: #fff;
+     padding: 10px;
+      }
+
+    nav ul {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+    }
+
+    ul button {
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fffb09;
+  color: #000000;
+  text-shadow: 1px 1px #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  text-shadow: 1px 1px #fffb09;
+}
+
+    nav li {
+     display: inline-block;
+     margin-right: 20px;
+    }
+
+     nav li:last-child {
+      margin-right: 0;
+     }
+
+     nav a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+h1 {
+	text-align: center;
+	font-size: 40px;
+    color: #fffb09;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px #ffffff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+input[type="number"],
+input[type="text"] {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+button[type="submit"] {
+  padding: 10px;
+  background-color: #fffb09;
+  color: #000000;
+  text-shadow: 1px 1px #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #000000;
+  text-shadow: 1px 1px #fffb09;
+}
+
+#result {
+    margin-top: 45px;
+    font-weight: bold;
+    color: #fffb09;
+    display: flex;
+    justify-content: center;
+}
+
+	</style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li> <button> <a target="_blank" href="/index.html">Projetos</a> </button> </li>
+          <!-- <li> <button> <a target="_blank" href="#introduction">Git Hub</a> </button> </li>  -->
+        </ul>
+      </nav>
+    </br>
+    </header>
+    <div class="container">
+      <h1>Contagem</h1>
+      <form>
+        <label for="n">Valor N:</label>
+        <input type="number" id="n" name="n" required>
+
+        <label for="data">Conjunto de dados:</label>
+        <input type="text" id="data" name="data" required>
+
+        <button type="submit">Contar</button>
+      </form>
+
+      <div id="result"></div>
+    </div>
+
+    <script>
+		function countInRange(n, data) {
+  // Converte a string de dados em um array de números
+  data = data.split(" ").map(Number);
+
+  // Filtra os números que estão dentro do intervalo desejado
+  let count = data.filter(num => num >= 1 && num <= n).length;
+
+  // Retorna o resultado
+  return count;
+}
+
+const form = document.querySelector("form");
+const resultDiv = document.querySelector("#result");
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+
+  // Obtém os valores do formulário
+  const n = Number(form.n.value);
+  const data = form.data.value;
+
+  // Executa a contagem
+  const count = countInRange(n, data);
+
+  // Exibe o resultado
+  resultDiv.textContent = `Existem ${count} números inteiros entre 1 e ${n} neste conjunto de dados.`;
+});
+
+	</script>
+  </body>
+</html>

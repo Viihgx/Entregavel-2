@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculadora MDC</title>
+    <style>
+		* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(GifStars\ \(3\).gif);
+  background-repeat: no-repeat;
+  background-position: initial;
+  background-size: cover;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  /* background-color: #000000; */
+  
+  border-radius: 5px;
+  text-align: center;
+  /* box-shadow: 0 0 20px rgba(229, 255, 0, 0.2); */
+}
+  
+header {
+     /* background-color: #000000; */
+     color: #fff;
+     padding: 10px;
+      }
+
+    nav ul {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+    }
+
+    nav li {
+     display: inline-block;
+     margin-right: 20px;
+    }
+
+     nav li:last-child {
+      margin-right: 0;
+     }
+
+     nav a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #fffb09;
+  text-shadow: 1px 1px #ffffff;
+}
+
+.input-container {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color:#ffffff
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fffb09;
+  color: #000000;
+  text-shadow: 1px 1px #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  text-shadow: 1px 1px #fffb09;
+}
+
+#result-container {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fffb09;
+}
+	</style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li> <button> <a target="_blank" href="/index.html">Projetos</a> </button> </li>
+          <!-- <li> <button> <a target="_blank" href="#introduction">Git Hub</a> </button> </li>  -->
+        </ul>
+      </nav>
+    </br>
+    </header>
+    <div class="container">
+      <h1>Calculadora MDC</h1>
+      <div class="input-container">
+        <label for="input-a">Número A:</label>
+        <input type="number" id="input-a" class="input-field">
+      </div>
+      <div class="input-container">
+        <label for="input-b">Número B:</label>
+        <input type="number" id="input-b" class="input-field">
+      </div>
+      <button id="calculate-button">Calcular</button>
+      <div id="result-container"></div>
+    </div>
+    <script>
+	function calculateMDC(a, b) {
+		if (b === 0) {
+		  return a;
+		}
+		return calculateMDC(b, a % b);
+	  }
+	  
+	  const calculateButton = document.getElementById('calculate-button');
+	  const resultContainer = document.getElementById('result-container');
+	  
+	  calculateButton.addEventListener('click', () => {
+		const inputA = parseInt(document.getElementById('input-a').value);
+		const inputB = parseInt(document.getElementById('input-b').value);
+	  
+		if (!inputA || !inputB) {
+		  resultContainer.innerText = 'Por favor, insira dois números inteiros';
+		  return;
+		}
+	  
+		const mdc = calculateMDC(inputA, inputB);
+		resultContainer.innerText = `MDC (entre ${inputA} e ${inputB}) = ${mdc}`;
+	  });
+	  </script>
+  </body>
+</html>

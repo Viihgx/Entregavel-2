@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Somatório de Números</title>
+    <style>
+      /* Estilos CSS */
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url(GifStars\ \(3\).gif);
+        background-repeat: no-repeat;
+        background-position: initial;
+        background-size: cover;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        margin-top: 20px;
+        /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
+      }
+
+      header {
+     /* background-color: #f2f2f2; */
+     color: #fff;
+     padding: 10px;
+      }
+
+    nav ul {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+    }
+
+    nav li {
+     display: inline-block;
+     margin-right: 20px;
+    }
+
+     nav li:last-child {
+      margin-right: 0;
+     }
+
+     nav a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+      h1 {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 20px;
+        color: #fffb09;
+        text-shadow: 1px 1px #ccc;
+      }
+      form {
+        /* background-color: #fff; */
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #ffffff;
+        font-size: 16px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+      }
+      input[type="text"]:focus {
+        border-color: #1e90ff;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #fffb09;
+        color: #000000;
+        text-shadow: 1px 1px #ffffff;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+	    	margin-block: 3%;
+      }
+      button:hover {
+        background-color: #ffffff;
+        color: #000000;
+        text-shadow: 1px 1px #fffb09;
+      }
+      #resultado {
+        /* background-color: #fff; */
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+        margin-top: 23px;
+        color: #fffb09;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li> <button> <a target="_blank" href="/index.html">Projetos</a> </button> </li>
+          <!-- <li> <button> <a target="_blank" href="#introduction">Git Hub</a> </button> </li>  -->
+        </ul>
+      </nav>
+    </br>
+    </header>
+  
+    <div class="container">
+      <h1>Somatório de Números</h1>
+      <form>
+        <label for="numeros">Insira um conjunto de números separados por vírgula:</label>
+        <input type="text" id="numeros" name="numeros">
+        <button type="button" id="calcular">Calcular Somatório</button>
+      </form>
+      <div id="resultado"></div>
+
+      <script>
+        // Código JavaScript
+        function calcularSomatorio() {
+          var numeros = document.getElementById("numeros").value;
+          numeros = numeros.split(",").map(function(numero) {
+            return parseInt(numero.trim());
+          });
+          var resultado = somatorio(numeros);
+          document.getElementById("resultado").innerHTML = "O somatório é: " + resultado;
+        }
+
+        function somatorio(numeros) {
+          return numeros.reduce(function(total, numero) {
+            return total + numero;
+          }, 0);
+        }
+
+        // Adiciona evento ao botão "Calcular Somatório"
+        document.getElementById("calcular").addEventListener("click", calcularSomatorio);
+      </script>
+    </div>
+  </body>
+</html>

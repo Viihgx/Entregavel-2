@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sequência de Fibonacci</title>
+    <style>
+        body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url(GifStars\ \(3\).gif);
+    background-repeat: no-repeat;
+    background-position: initial;
+    background-size: cover;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: 40px auto;
+    /* background-color: #fff; */
+    /* box-shadow: 0 0 20px rgba(229, 255, 0, 0.2); */
+    border-radius: 10px;
+    margin-top: 33px;
+  }
+
+  header {
+     /* background-color: #f2f2f2; */
+     color: #fff;
+     padding: 10px;
+      }
+
+    nav ul {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+    }
+
+    nav li {
+     display: inline-block;
+     margin-right: 20px;
+    }
+
+     nav li:last-child {
+      margin-right: 0;
+     }
+
+     nav a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 18px;
+    }
+ 
+
+  h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #fffb09;
+    text-shadow: 1px 1px #ffffff;
+  }
+
+  label {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+
+  .input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  input[type='number'] {
+    font-size: 24px;
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ccc;
+    transition: box-shadow 0.3s ease-in-out;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  input[type='number']:focus {
+    box-shadow: 0px 0px 10px #ccc;
+  }
+
+  button {
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #fffb09;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    text-shadow: 1px 1px #ffffff;
+    border-radius: 20px;
+  }
+
+  button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    text-shadow: 1px 1px #fffb09;
+  }
+
+  #output {
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.5;
+    color: #fffb09;
+  }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li> <button> <a target="_blank" href="/index.html">Projetos</a> </button> </li>
+          <!-- <li> <button> <a target="_blank" href="#introduction">Git Hub</a> </button> </li>  -->
+        </ul>
+      </nav>
+    </br>
+    </header>
+    <div class="container">
+      <h1>Sequência de Fibonacci</h1>
+      <label for="numInput">Quantos números você deseja gerar?</label>
+      <div class="input-group">
+        <input type="number" id="numInput">
+        <button onclick="generateFibonacci()">Gerar</button>
+      </div>
+      <div id="output"></div>
+    </div>
+    <script>
+        function generateFibonacci() {
+  let num = parseInt(document.getElementById("numInput").value);
+  let sequence = [0, 1];
+  
+  for (let i = 2; i < num; i++) {
+      let nextNum = sequence[i - 1] + sequence[i - 2];
+      sequence.push(nextNum);
+    }
+
+    document.getElementById('output').innerHTML =
+      'RESULTADO: ' + sequence.join(', ');
+  }
+    </script>
+  </body>
+</html>

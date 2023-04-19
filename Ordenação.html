@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ordenação</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url(GifStars\ \(3\).gif);
+      background-repeat: no-repeat;
+      background-position: initial;
+      background-size: cover;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  /* box-shadow: 0 0 20px rgba(229, 255, 0, 0.2); */
+  border-radius: 10px;
+  margin-block: auto;
+}
+
+header {
+     color: #fff;
+     padding: 10px;
+      }
+
+    nav ul {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+    }
+
+    nav li {
+     display: inline-block;
+     margin-right: 20px;
+    }
+
+     nav li:last-child {
+      margin-right: 0;
+     }
+
+     nav a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+  color: #fffb09;
+  text-shadow: 1px 1px #ffffff;
+
+}
+
+.form {
+  margin-bottom: 50px;
+}
+
+label {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  
+}
+
+button {
+  background-color: #fffb09;
+  color: #000000;
+  text-shadow: 1px 1px #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  text-shadow: 1px 1px #fffb09;
+}
+
+.result {
+  background-color: #f1f1f1;
+  padding: 1px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #000000;
+  text-shadow: 1px 1px #ffffff;
+}
+
+#sorted-array {
+  font-size: 24px;
+  text-shadow: 1px 1px #ffffff;
+  color: #000000;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li> <button> <a target="_blank" href="/index.html">Projetos</a> </button> </li>
+        <!-- <li> <button> <a target="_blank" href="#introduction">Git Hub</a> </button> </li>  -->
+      </ul>
+    </nav>
+  </br>
+  </header>
+
+  <div class="container">
+    <h1>Ordenação</h1>
+    <div class="form">
+      <label for="array">Insira um array de números:</label>
+      <input type="text" id="array" placeholder="ex. 5, 8, 1, 3">
+      <button id="sort-button">Ordenar</button>
+    </div>
+    <div class="result">
+      <h2>Resultado:</h2>
+      <div id="sorted-array"></div>
+    </div>
+  </div>
+
+  <script> 
+    function quicksort(array) {
+      if (array.length <= 1) {
+      return array;
+  }
+
+  const pivot = array[0];
+  const left = [];
+  const right = [];
+
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < pivot) {
+      left.push(array[i]);
+    } else {
+      right.push(array[i]);
+    }
+  }
+
+  return quicksort(left).concat(pivot, quicksort(right));
+}
+
+const sortButton = document.getElementById('sort-button');
+const arrayInput = document.getElementById('array');
+const sortedArrayDiv = document.getElementById('sorted-array');
+
+sortButton.addEventListener('click', () => {
+  const input = arrayInput.value;
+  const array = input.split(',').map(Number);
+  const sortedArray = quicksort(array);
+  sortedArrayDiv.textContent = sortedArray.join(', ');
+});
+
+  </script>
+</body>
+</html>

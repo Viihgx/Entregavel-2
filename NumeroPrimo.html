@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Verificar se um número é primo</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url(GifStars\ \(3\).gif);
+            background-repeat: no-repeat;
+            background-position: initial;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 100px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        header {
+     /* background-color: #f2f2f2; */
+     color: #fff;
+     padding: 10px;
+      }
+
+    nav ul {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+    }
+
+    nav li {
+     display: inline-block;
+     margin-right: 20px;
+    }
+
+     nav li:last-child {
+      margin-right: 0;
+     }
+
+     nav a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+        h1 {
+            font-size: 40px;
+            color: #fffb09;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px #ffffff;
+
+        }
+        
+        input[type="number"] {
+            padding: 1rem;
+            border-radius: 4px;
+            border: none;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+            color: #555;
+            background-color: #f3f3f3;
+            box-shadow: inset 0px 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s ease-in-out;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            background-color: #fff;
+            box-shadow: inset 0px 1px 3px rgba(0,0,0,0.2), 0px 0px 8px rgba(255, 9, 132, 0.4);
+        }
+
+        button {
+            background-color: #fffb09;
+            color: #000000;
+            text-shadow: 1px 1px #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        button:hover {
+          background-color: #ffffff;
+          color: #000000;
+          text-shadow: 1px 1px #fffb09;
+        }
+
+        p#resultado {
+            margin-top: 2.0rem;
+            font-size: 1.5rem;
+            color: #fffb09;
+        }
+
+    </style>
+  </head>
+  <body>
+    <header>
+        <nav>
+          <ul>
+            <li> <button> <a target="_blank" href="/index.html">Projetos</a> </button> </li>
+            <!-- <li> <button> <a target="_blank" href="#introduction">Git Hub</a> </button> </li>  -->
+          </ul>
+        </nav>
+      </br>
+      </header>
+    
+    <div class="container">
+      <h1>Verificar se um número é primo</h1>
+      <input type="number" id="numero" placeholder="Digite um número inteiro positivo">
+      <button onclick="verificar()">Verificar</button>
+      <p id="resultado"></p>
+    </div>
+    <script>  
+        function isPrime(n) {
+
+        if (n < 2) {
+            return false;
+        }
+
+        for (let i = 2; i <= Math.floor(n/2); i++) {
+            if (n % i === 0) {
+            // Se n é divisível por i, não é primo
+            return false;
+            }
+        }
+
+        return true;
+        }
+
+        function verificar() {
+        const numeroInput = document.getElementById('numero');
+        const resultado = document.getElementById('resultado');
+
+        if (isNaN(numeroInput.value) || numeroInput.value === '') {
+            resultado.innerText = 'Digite um número válido';
+            return;
+        }
+
+        const numero = parseInt(numeroInput.value);
+
+        if (isPrime(numero)) {
+            resultado.innerText = `${numero} é primo`;
+        } else {
+            resultado.innerText = `${numero} não é primo`;
+        }
+        }
+    </script>
+
+  </body>
+</html>
